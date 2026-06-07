@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+pycache_tmp/
+.runtime_cache/
+
+# Node
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local archives and legacy workspace material
+archive_local/
+*_old/
+*old*
+*backup*
+*Backup*
+*bak*
+*.bak
+*副本*
+*copy*
+*Copy*
+
+# Data and outputs
+data/raw/
+data/interim/
+dataset/
+datasets/
+DFFcode/
+outputs/
+runs/
+logs/
+checkpoints/
+weights/
+workspace_outputs/
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.pkl
+
+# Large packaged deliverables
+*.zip
+*.rar
+*.7z
+
+# Office temporary files
+~$*.docx
+~$*.pptx
+~$*.xlsx
+
+# Secrets
+.env
+*.key
+*.pem
+secrets.*
+config.local.*
+*token*
+*secret*
+*password*
+
+# Local training and dashboard helpers
+dashboard_status.txt
+monitor_*.cmd
+launch_*training*.ps1
