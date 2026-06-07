@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project explores multi-material surface defect visualization using focus-stack imaging, depth-from-focus (DFF), glare-aware reconstruction, and learning-based depth correction. The work combines traditional focus-measure baselines, simulated surface generation, glare-risk modeling, and neural-network experiments for relative 3D surface reconstruction. Final deliverables include project reports, defense slides, representative comparison figures, and reproducible Python scripts for the core simulation and evaluation pipeline.
+This project explores multi-material surface defect visualization using focus-stack imaging, depth-from-focus (DFF), glare-aware reconstruction, and learning-based depth correction. The work combines traditional focus-measure baselines, simulated surface generation, glare-risk modeling, and neural-network experiments for relative 3D surface reconstruction. The public version includes representative comparison figures, technical notes, and reproducible Python scripts for the core simulation and evaluation pipeline.
 
-The public repository is organized as a readable portfolio version. Large raw focus stacks, trained model weights, intermediate experiment folders, and complete local delivery packages are documented but excluded from GitHub.
+The public repository is organized as a readable portfolio version. Large raw focus stacks, trained model weights, intermediate experiment folders, Office report or slide files, and complete local delivery packages are documented but excluded from GitHub.
 
 ## My Role
 
@@ -47,8 +47,6 @@ The public repository is organized as a readable portfolio version. Large raw fo
 |   |-- run_real_focus_measure_eval.py
 |   `-- train_*.py
 |-- docs/
-|   |-- reports/
-|   |-- slides/
 |   `-- notes/
 |-- assets/
 |   `-- figures/
@@ -103,7 +101,7 @@ The project produced relative 3D reconstruction panels for real focus-stack samp
 
 ## Data and Model Notes
 
-The complete raw focus stacks, generated datasets, `.npy` arrays, training logs, checkpoints, and model weights are excluded from the public repository because of file size, reproducibility boundaries, and project-material constraints. See `data/README.md` and `models/README.md` for details.
+The complete raw focus stacks, generated datasets, `.npy` arrays, training logs, checkpoints, Office display files, and model weights are excluded from the public repository because of file size, reproducibility boundaries, and project-material constraints. See `data/README.md` and `models/README.md` for details.
 
 ## Limitations
 

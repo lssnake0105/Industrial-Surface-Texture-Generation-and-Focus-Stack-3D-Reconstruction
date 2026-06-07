@@ -61,6 +61,14 @@ workspace_outputs/
 *.rar
 *.7z
 
+# Office display files
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+
 # Office temporary files
 ~$*.docx
 ~$*.pptx
