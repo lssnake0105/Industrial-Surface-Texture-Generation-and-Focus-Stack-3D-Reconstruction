@@ -86,18 +86,36 @@ python src/simulate_antiglare_prototype.py
 
 Review the representative results:
 
-- `assets/figures/synthetic_method_ranking_mae.png`
-- `assets/figures/real_sample_visual_ranking.png`
-- `results/figures/simulation_multisample_algorithm_panel.png`
-- `results/figures/real_midterm_multisample_panel.png`
+- `assets/figures/readme_showcase/synthetic_multisample_algorithm_panel.png`
+- `assets/figures/readme_showcase/real_sample_multisample_reconstruction_panel.png`
+- `assets/figures/readme_showcase/synthetic_method_mae_comparison.png`
+- `assets/figures/readme_showcase/ppt_pit_sample_reconstruction_summary.png`
 
 ## Results
 
 The project produced relative 3D reconstruction panels for real focus-stack samples and quantitative validation on simulated samples with known height maps. In the organized report assets, the simulated benchmark identifies Focus-ResUNet as the strongest method by average MAE among the tested project variants, while real-sample panels are presented as relative reconstruction and visual defect localization results.
 
-![Synthetic method ranking](assets/figures/synthetic_method_ranking_mae.png)
+### Synthetic Benchmark
 
-![Real sample visual ranking](assets/figures/real_sample_visual_ranking.png)
+![Synthetic multi-sample algorithm comparison](assets/figures/readme_showcase/synthetic_multisample_algorithm_panel.png)
+
+![Synthetic method MAE comparison](assets/figures/readme_showcase/synthetic_method_mae_comparison.png)
+
+### Real-Sample Reconstruction
+
+![Real sample reconstruction overview](assets/figures/readme_showcase/real_sample_multisample_reconstruction_panel.png)
+
+![Real 5um pit 3D comparison](assets/figures/readme_showcase/real_pit_5um_all_algorithm_3d.png)
+
+![Real 100um key texture 3D comparison](assets/figures/readme_showcase/real_key_texture_100um_all_algorithm_3d.png)
+
+### Presentation-Derived Showcase Figures
+
+![Pit sample reconstruction summary](assets/figures/readme_showcase/ppt_pit_sample_reconstruction_summary.png)
+
+![Texture sample reconstruction summary](assets/figures/readme_showcase/ppt_texture_sample_reconstruction_summary.png)
+
+![Synthetic surface 3D comparison](assets/figures/readme_showcase/ppt_synthetic_surface_3d_comparison.png)
 
 ## Data and Model Notes
 
