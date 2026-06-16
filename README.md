@@ -95,6 +95,12 @@ Review the representative results:
 
 The project produced relative 3D reconstruction panels for real focus-stack samples and quantitative validation on simulated samples with known height maps. In the organized report assets, the simulated benchmark identifies Focus-ResUNet as the strongest method by average MAE among the tested project variants, while real-sample panels are presented as relative reconstruction and visual defect localization results.
 
+### Pipeline and Network Diagrams
+
+![Focus-stack DFF reconstruction pipeline](output/imagegen/focus_stack_dff_pipeline_v2.png)
+
+![Focus-ResUNet industrial network diagram](output/imagegen/focus-resunet-industrial-network-diagram-final-2048x1152.png)
+
 ### Synthetic Benchmark
 
 ![Synthetic multi-sample algorithm comparison](assets/figures/readme_showcase/synthetic_multisample_algorithm_panel.png)
