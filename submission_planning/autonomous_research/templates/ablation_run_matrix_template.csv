@@ -1,0 +1,8 @@
+run_id,variant,dff_gadff_prior,focal_difference,glare_cue,domain_randomization,residual_bounded,current_status,manuscript_use
+ABL-00,Full S2R-FocusNet,yes,yes,yes,yes,yes,existing_candidate,final method if config is verified
+ABL-01,Direct image-to-depth,no,no,no,yes,no,pending,prior-guided necessity
+ABL-02,w/o DFF/GADFF prior,no,yes,yes,yes,yes,pending,focus-prior contribution
+ABL-03,w/o focal difference,yes,no,yes,yes,yes,pending,axial focus-response contribution
+ABL-04,w/o glare cue,yes,yes,no,yes,yes,pending,high-risk glare modeling contribution
+ABL-05,w/o domain randomization,yes,yes,yes,no,yes,pending,simulation-to-real robustness
+ABL-06,unbounded prediction,yes,yes,yes,yes,no,optional,spike-control and residual-bound analysis

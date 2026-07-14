@@ -1,0 +1,40 @@
+{
+  "case_id": "polished_a_ridge",
+  "label": "Polished metal A-ridge",
+  "surface": {
+    "name": "polished_a_ridge",
+    "width": 1920,
+    "height": 1080,
+    "depth_range_um": 75.0,
+    "baseline_type": "a_ridge",
+    "noise_type": "perlin",
+    "seed": 4101,
+    "tilt_x_um": 0.0,
+    "tilt_y_um": 0.0,
+    "feature_amp_um": 68.0,
+    "noise_amp_um": 0.55,
+    "period_count": 8.0,
+    "ridge_width": 0.082,
+    "step_position": 0.0,
+    "perlin_octaves": 6,
+    "perlin_grid": 72,
+    "perlin_persistence": 0.54,
+    "valley_width": 0.36,
+    "valley_floor": 0.08,
+    "valley_sharpness": 1.0,
+    "orientation_deg": -8.0
+  },
+  "metal": {
+    "name": "generic polished steel-like metal",
+    "n": 2.7,
+    "k": 3.3,
+    "roughness_rms_nm": 18.0,
+    "parasitic_reflection_amp": 0.075,
+    "spatial_coherence": 0.45,
+    "diffuse_fraction": 0.08
+  },
+  "wavelength_um": 0.525,
+  "na": 0.4,
+  "object_pixel_um": 0.17250000000000001,
+  "super_sampling": 2
+}

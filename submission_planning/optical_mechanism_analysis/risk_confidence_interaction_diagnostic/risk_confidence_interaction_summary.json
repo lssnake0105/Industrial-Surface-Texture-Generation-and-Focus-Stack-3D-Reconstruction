@@ -1,0 +1,33 @@
+{
+  "status": "pass",
+  "date": "2026-06-22",
+  "focus_bins": 5,
+  "risk_bins": 5,
+  "max_pixels_per_sample": 160000,
+  "pixel_count": 1120000,
+  "sample_count": 7,
+  "focus_conf_mean": 0.3518843650817871,
+  "risk_mean": 0.3984989523887634,
+  "prior_error_mean_um": 101.21163940429688,
+  "risk_vs_prior_error_pearson": -0.28042046159691375,
+  "risk_vs_prior_error_spearman": -0.34275266936817506,
+  "focus_conf_vs_prior_error_pearson": -0.26951206333957595,
+  "focus_conf_vs_prior_error_spearman": -0.4943663555149836,
+  "delta_weight_vs_prior_error_pearson": -0.23903395270726888,
+  "delta_weight_vs_prior_error_spearman": -0.4659716576335766,
+  "high_delta_prior_error_um": 26.320714950561523,
+  "low_delta_prior_error_um": 191.160400390625,
+  "high_delta_focus_conf": 0.5883848071098328,
+  "high_delta_risk": 0.907234251499176,
+  "high_delta_overlap_top_error20": 0.03229910714285714,
+  "artifacts": {
+    "bin_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\risk_confidence_interaction_diagnostic\\risk_confidence_interaction_bins.csv",
+    "summary_json": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\risk_confidence_interaction_diagnostic\\risk_confidence_interaction_summary.json",
+    "report_md": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\risk_confidence_interaction_diagnostic\\risk_confidence_interaction_report.md",
+    "prior_error_heatmap": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\risk_confidence_interaction_diagnostic\\risk_confidence_prior_error_heatmap.png",
+    "delta_weight_heatmap": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\risk_confidence_interaction_diagnostic\\risk_confidence_delta_weight_heatmap.png"
+  },
+  "claim_eligible": false,
+  "main_table_eligible": false,
+  "claim_boundary": "Claim-ineligible risk-confidence diagnostic only. No model accuracy or calibrated real-height claim."
+}

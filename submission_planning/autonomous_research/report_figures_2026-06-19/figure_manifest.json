@@ -1,0 +1,15 @@
+﻿{
+    "figures":  [
+                    "submission_planning\\autonomous_research\\report_figures_2026-06-19\\fig2_experiment_budget_timeline.png",
+                    "submission_planning\\autonomous_research\\report_figures_2026-06-19\\fig3_ablation_metrics_candidate_vs_repeat.png",
+                    "submission_planning\\autonomous_research\\report_figures_2026-06-19\\fig4_longer_repeat_improvement.png",
+                    "submission_planning\\autonomous_research\\report_figures_2026-06-19\\fig5_per_sample_longer_repeat_heatmap.png",
+                    "submission_planning\\autonomous_research\\report_figures_2026-06-19\\fig6_test_sample_conditions.png"
+                ],
+    "source_metrics":  {
+                           "candidate_summary":  "tmp\\ablation_results\\matched_full_split_eval\\2026-06-19_matched_full_candidate_eval\\2026-06-19_matched_full_candidate_eval_method_summary_metrics.csv",
+                           "longer_summary":  "tmp\\ablation_results\\matched_full_split_eval\\2026-06-19_matched_longer_repeat_eval\\2026-06-19_matched_longer_repeat_eval_method_summary_metrics.csv",
+                           "candidate_per_sample":  "tmp\\ablation_results\\matched_full_split_eval\\2026-06-19_matched_full_candidate_eval\\2026-06-19_matched_full_candidate_eval_per_sample_metrics.csv",
+                           "longer_per_sample":  "tmp\\ablation_results\\matched_full_split_eval\\2026-06-19_matched_longer_repeat_eval\\2026-06-19_matched_longer_repeat_eval_per_sample_metrics.csv"
+                       }
+}

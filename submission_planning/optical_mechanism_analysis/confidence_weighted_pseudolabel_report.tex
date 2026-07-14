@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xeCJK}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{float}
+
+\setCJKmainfont{SimSun}
+\setmainfont{Times New Roman}
+
+\title{置信度加权伪标签训练策略验证报告}
+\author{SRTP Optical Mechanism Analysis}
+\date{2026-06-22}
+
+\begin{document}
+\maketitle
+
+\section{Research Question}
+
+真实焦栈形态分型显示，DFF 先验在真实域中同时受到平坦歧义响应、跨层多峰、局部 peak-layer 跳变、高亮饱和和暗弱信号影响。本轮受控合成实验进一步验证一个训练策略问题：当 DFF 深度被用作伪标签时，基于 focus confidence 的权重是否能让学生模型更少受退化区域支配。
+
+\section{Experimental Setup}
+
+实验共包含 96 个条件，覆盖 4 个随机种子、2 种焦栈层数、2 种曝光、2 种 NA 和 3 种退化模式。每个条件生成微表面高度、合成焦栈、DFF 深度、退化伪标签和置信度权重图。学生模型为轻量 ridge-regression 空间模型，输入仅包含 DFF 派生特征、图像强度、风险图和空间低阶特征，不使用真实高度作为输入。
+
+两种训练目标分别为均匀伪标签监督和置信度加权伪标签监督。置信度权重降低 low-margin、low-peak-strength 和 glare-risk 区域在损失中的影响。本实验用于验证训练策略方向，并不等价于完整 FocusResUNet 训练。
+
+\section{Overall Results}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Metric & Value \\
+\midrule
+Conditions & 96 \\
+Uniform student MAE & 0.0883 \\
+Confidence-weighted student MAE & 0.0857 \\
+Mean MAE reduction & 0.0027 \\
+Mean relative improvement & 2.6\% \\
+Win rate & 71.9\% \\
+Unweighted pseudo-label noise & 0.1198 \\
+Confidence-weighted pseudo-label noise & 0.1195 \\
+\bottomrule
+\end{tabular}
+\caption{Overall comparison between uniform and confidence-weighted pseudo-label supervision.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Mode & N & Uniform MAE & Weighted MAE & Rel. improv. & Win rate \\
+\midrule
+glare & 32 & 0.1128 & 0.1121 & 0.6\% & 62.5\% \\
+mixed & 32 & 0.0993 & 0.0921 & 7.2\% & 100.0\% \\
+weak\_texture & 32 & 0.0528 & 0.0528 & -0.0\% & 53.1\% \\
+\bottomrule
+\end{tabular}
+\caption{Mode-wise results. Confidence weighting is most useful under mixed degradation.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{confidence_weighted_pseudolabel_v2/confidence_weighted_pseudolabel_aggregate.png}
+\caption{Aggregate MAE and effective pseudo-label noise by degradation mode.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{confidence_weighted_pseudolabel_v2/confidence_weighted_pseudolabel_delta_hist.png}
+\caption{Distribution of MAE improvement over 96 synthetic conditions.}
+\end{figure}
+
+\section{Interpretation}
+
+整体上，置信度加权学生模型的平均 MAE 从 0.0883 降至 0.0857，平均相对改善为 2.6\%，胜率为 71.9\%。但该收益并非均匀分布：mixed 退化模式的相对改善达到 7.2\%，胜率为 100.0\%；glare 模式只有 0.6\% 的轻微收益；weak-texture 模式基本不变。这说明 confidence weighting 的主要价值在于处理多种退化叠加时的伪标签可信度分配，而不是对所有退化类型都提供同等幅度的收益。
+
+有效伪标签噪声的全局加权均值变化较小，说明本实验中的性能收益并不来自简单删除所有高误差像素，而来自改变学生模型拟合时对不同区域的关注顺序。这个结论与真实焦栈分型结果一致：真实域中多种不可靠形态并存，因此训练策略应显式区分哪些 DFF 观测可以强监督，哪些观测更适合低权重、辅助置信度预测或不确定性建模。
+
+\section{Paper-Ready Statement}
+
+CN: 在受控合成实验中，我们将 DFF 深度视为伪标签，并比较均匀监督与置信度加权监督。96 个条件下，置信度加权学生模型的平均 MAE 从 0.0883 降至 0.0857，胜率为 71.9\%。收益主要集中在 mixed 退化模式，相对改善为 7.2\%，胜率为 100.0\%；glare 模式仅有轻微改善，weak-texture 模式基本不变。这说明置信度策略更适合作为按退化类型调节伪标签可信度的训练机制，而不是简单宣称对所有场景都有同等收益。
+
+EN: In a controlled synthetic experiment, we treat DFF depth as a pseudo label and compare uniform supervision with confidence-weighted supervision. Over 96 conditions, the average MAE of the confidence-weighted student decreases from 0.0883 to 0.0857, with a 71.9\% win rate. The benefit is concentrated in the mixed degradation mode, where relative improvement reaches 7.2\% with a 100.0\% win rate; glare shows a small gain, while weak-texture degradation is nearly unchanged. This supports confidence-aware pseudo-label weighting as a degradation-dependent training mechanism rather than a uniformly beneficial heuristic.
+
+\section{Limitations}
+
+本实验是受控合成代理实验，学生模型被刻意设计为轻量模型，以便审计伪标签权重的影响。它可以支撑论文中的训练策略动机，但不能替代完整 FocusResUNet 训练结果。后续若要写成主实验结论，需要在真实网络上进行 seed repeats、消融实验和真实域验证。
+
+\end{document}

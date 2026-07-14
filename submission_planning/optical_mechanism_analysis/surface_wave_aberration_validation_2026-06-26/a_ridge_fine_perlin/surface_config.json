@@ -1,0 +1,23 @@
+{
+  "name": "a_ridge_fine_perlin",
+  "width": 960,
+  "height": 540,
+  "depth_range_um": 80.0,
+  "baseline_type": "a_ridge",
+  "noise_type": "perlin",
+  "seed": 2601,
+  "tilt_x_um": 0.0,
+  "tilt_y_um": 0.0,
+  "feature_amp_um": 72.0,
+  "noise_amp_um": 1.6,
+  "period_count": 8.0,
+  "ridge_width": 0.08,
+  "step_position": 0.0,
+  "perlin_octaves": 6,
+  "perlin_grid": 38,
+  "perlin_persistence": 0.55,
+  "valley_width": 0.36,
+  "valley_floor": 0.08,
+  "valley_sharpness": 1.0,
+  "orientation_deg": -8.0
+}

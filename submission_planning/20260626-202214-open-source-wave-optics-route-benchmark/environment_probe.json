@@ -1,0 +1,17 @@
+{
+  "python": "D:\\Anaconda\\python.exe",
+  "vendor_dir": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\20260626-202214-open-source-wave-optics-route-benchmark\\vendor",
+  "vendor_exists": true,
+  "vendor_size_mb": 180.8087682723999,
+  "numpy": true,
+  "scipy": true,
+  "matplotlib": true,
+  "pandas": true,
+  "torch": true,
+  "torchoptics": false,
+  "diffractio": false,
+  "prysm": true,
+  "pyotf": false,
+  "psf_generator": false,
+  "pySCATMECH": false
+}

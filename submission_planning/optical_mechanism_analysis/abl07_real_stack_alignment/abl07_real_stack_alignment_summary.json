@@ -1,0 +1,39 @@
+{
+  "date": "2026-06-22",
+  "status": "pass",
+  "stack_count": 7,
+  "checkpoint_tags": [
+    "2026-06-22_confidence_gated_prior_full_candidate",
+    "2026-06-22_confidence_gated_prior_seed_repeat"
+  ],
+  "output_dir": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\abl07_real_stack_alignment",
+  "claim_boundary": "No calibrated real height ground truth. No absolute real-height accuracy claim.",
+  "aggregate": [
+    {
+      "checkpoint_tag": "2026-06-22_confidence_gated_prior_full_candidate",
+      "stack_count": 7,
+      "mean_model_dev_mean": 0.002669559874837952,
+      "mean_dff_dev_mean": 0.06792250807796206,
+      "mean_low_confidence_model_dev_reduction_percent": 94.85461996042848,
+      "mean_spike_top10_model_dev_reduction_percent": 96.24881321818097,
+      "mean_saturated_model_dev_reduction_percent": 83.15860093921104,
+      "mean_quality_top10_model_dev_reduction_percent": 95.63684814701996,
+      "mean_confident_pearson_model_dff": 0.507295101660557,
+      "mean_confident_model_std_over_dff_std": 0.6299258172512054,
+      "mean_all_region_pearson_model_dff": 0.46675746486246944
+    },
+    {
+      "checkpoint_tag": "2026-06-22_confidence_gated_prior_seed_repeat",
+      "stack_count": 7,
+      "mean_model_dev_mean": 0.0021910121265266624,
+      "mean_dff_dev_mean": 0.06792250807796206,
+      "mean_low_confidence_model_dev_reduction_percent": 95.32104498069181,
+      "mean_spike_top10_model_dev_reduction_percent": 96.93231129302808,
+      "mean_saturated_model_dev_reduction_percent": 81.399155011408,
+      "mean_quality_top10_model_dev_reduction_percent": 96.18869792310866,
+      "mean_confident_pearson_model_dff": 0.4212614990824352,
+      "mean_confident_model_std_over_dff_std": 0.4726546938930239,
+      "mean_all_region_pearson_model_dff": 0.3764867352603419
+    }
+  ]
+}

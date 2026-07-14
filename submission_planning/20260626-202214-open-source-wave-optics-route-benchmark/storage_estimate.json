@@ -1,0 +1,6 @@
+{
+  "single_float32_stack_mb": 7.3125,
+  "two_stacks_mb": 14.625,
+  "single_complex64_field_mb": 1.125,
+  "expected_outputs_without_vendor_mb": 25.0
+}

@@ -41,6 +41,7 @@ data/interim/
 dataset/
 datasets/
 DFFcode/
+tmp/
 outputs/
 runs/
 logs/
@@ -88,3 +89,23 @@ config.local.*
 dashboard_status.txt
 monitor_*.cmd
 launch_*training*.ps1
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex*
+*.toc
+*.xdv
+submission_planning/**/build_verify*/
+submission_planning/**/latex_build/
+
+# Local research-package dependencies and copied source bundles
+submission_planning/**/vendor/
+submission_planning/**/vendor_*/
+output/related_work_zotero_export.bib
+论文与PPT制作项目包/

@@ -1,0 +1,23 @@
+{
+  "name": "v_valley_polished_floor",
+  "width": 960,
+  "height": 540,
+  "depth_range_um": 90.0,
+  "baseline_type": "v_valley",
+  "noise_type": "perlin",
+  "seed": 2602,
+  "tilt_x_um": 0.0,
+  "tilt_y_um": 0.0,
+  "feature_amp_um": 82.0,
+  "noise_amp_um": 1.2,
+  "period_count": 8.0,
+  "ridge_width": 0.13,
+  "step_position": 0.0,
+  "perlin_octaves": 6,
+  "perlin_grid": 45,
+  "perlin_persistence": 0.58,
+  "valley_width": 0.52,
+  "valley_floor": 0.14,
+  "valley_sharpness": 0.72,
+  "orientation_deg": -15.0
+}

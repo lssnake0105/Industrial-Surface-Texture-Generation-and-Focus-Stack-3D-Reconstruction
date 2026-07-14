@@ -1,0 +1,7 @@
+﻿checkpoint_tag,target,sample_count,mean_pearson_focus_conf_vs_abs_error,mean_spearman_focus_conf_vs_abs_error,mean_abs_error_um
+2026-06-22_confidence_gated_prior_full_candidate,dff_error,7,-0.24497933676299005,-0.5212414620176732,100.55333736964634
+2026-06-22_confidence_gated_prior_full_candidate,gadff_error,7,-0.2504734831069784,-0.497377613112327,105.8326713017055
+2026-06-22_confidence_gated_prior_full_candidate,model_error,7,-0.0819195111340163,-0.07522284148193137,55.92860794067383
+2026-06-22_confidence_gated_prior_seed_repeat,dff_error,7,-0.24497933676299005,-0.5212414620176732,100.55333736964634
+2026-06-22_confidence_gated_prior_seed_repeat,gadff_error,7,-0.2504734831069784,-0.497377613112327,105.8326713017055
+2026-06-22_confidence_gated_prior_seed_repeat,model_error,7,-0.08676233063675062,-0.0746392825634908,66.09541157313755

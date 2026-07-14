@@ -1,0 +1,194 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\newcommand{\method}{CGP-FocusNet}
+\newcommand{\dff}{P_{\mathrm{DFF}}}
+\newcommand{\gadff}{P_{\mathrm{GADFF}}}
+\newcommand{\um}{\ensuremath{\mu\mathrm{m}}}
+
+\title{CGP-FocusNet Manuscript Insert Package}
+\author{}
+\date{2026-06-22}
+
+\begin{document}
+
+\maketitle
+
+\section*{Recommended Method Name and Scope}
+
+For the next manuscript revision, the method should be unified as \method, short for Confidence-Gated Prior FocusNet. The name reflects the current verified mechanism: a compact focus-stack network is trained with synthetic height supervision and a confidence-gated DFF/GADFF prior-consistency term. Earlier names such as Focus-ResUNet, S2R-FocusNet, TinyDepthNet, and residual variants should be treated as implementation history, internal baselines, or ablation variants. The contribution should be written as one method rather than as a collection of intermediate model products.
+
+The safe one-sentence method definition is:
+
+\begin{quote}
+\method{} estimates relative surface morphology from a focus stack by fusing raw focal-plane intensities, adjacent focal-difference channels, DFF/GADFF depth priors, focus-confidence cues, and a glare/risk cue, while using focus confidence to gate the prior-consistency loss during synthetic supervised training.
+\end{quote}
+
+\section*{Abstract Replacement Draft}
+
+Reflective industrial surface defects require three-dimensional morphology reconstruction to characterize local depth variation, boundary continuity, and micro-scale surface irregularity beyond two-dimensional visual inspection. However, calibrated height ground truth is difficult to obtain for real microscopic reflective surfaces, which limits direct supervised training and absolute real-sample evaluation. This work studies a simulation-to-real depth-from-focus framework for glare-prone industrial surfaces. We propose \method, a confidence-gated prior focus-stack network that combines raw focus-stack images, adjacent focal-difference representation, DFF/GADFF priors, focus-confidence cues, and a glare/risk cue. The model is trained on controllable synthetic focus stacks with known height maps using supervised height reconstruction and a confidence-gated DFF/GADFF prior-consistency term. On the fixed seven-sample synthetic test split, two full ABL-07 runs achieve mean MAE values of 55.93 \um{} and 66.10 \um{}, improving over DFF by 44.38\% and 34.27\% in ratio-of-means MAE. The clearest mechanism appears in low-confidence focus regions, where the two runs reduce DFF error by 55.64\% and 49.74\%. On seven real focus stacks without calibrated height ground truth, no-reference diagnostics show consistent suppression of DFF local-deviation spikes in low-confidence, spike-prone, and saturated regions. These results support confidence-gated prior consistency as a practical simulation-to-real alignment mechanism, while calibrated real-height accuracy and updated external SOTA comparisons remain future work.
+
+\section*{Introduction Contribution Replacement}
+
+The main contributions can be stated as follows:
+
+\begin{enumerate}
+  \item We construct a controllable synthetic focus-stack training and evaluation setting for reflective defect morphology, where known height maps provide supervised learning targets and absolute synthetic error metrics.
+  \item We propose \method, a confidence-gated prior focus-stack reconstruction model that integrates focal-plane images, adjacent focal differences, DFF/GADFF priors, focus-confidence cues, and a glare/risk cue through a compact ResUNet-style architecture.
+  \item We introduce a confidence-gated DFF/GADFF prior-consistency objective that keeps the supervised synthetic height term uniform while reducing the influence of unreliable focus priors in low-confidence or high-risk regions.
+  \item We organize the evaluation into three evidence layers: synthetic height-error evaluation with known ground truth, stratified mechanism analysis in low-confidence focus regions, and real-stack no-reference diagnostic alignment.
+  \item We define explicit claim boundaries for real samples: real focus stacks are used to evaluate no-reference diagnostic consistency, while calibrated real-height accuracy is left to future ground-truth acquisition.
+\end{enumerate}
+
+\section*{Method Insert: Input Representation}
+
+Let \(I=\{I_1,\ldots,I_N\}\) denote an \(N\)-frame focus stack captured at different focal positions. In the current implementation, \(N=17\). The model input is constructed from three groups of channels:
+
+\begin{equation}
+X = \mathrm{concat}\left(I,\Delta I, R,\dff,C_{\mathrm{DFF}},\gadff,C_{\mathrm{GADFF}}\right),
+\end{equation}
+where \(\Delta I=\{I_{i+1}-I_i\}_{i=1}^{N-1}\) denotes adjacent focal-difference channels, \(R\) is a glare/risk cue, \(\dff\) and \(\gadff\) are the traditional and glare-aware DFF depth priors, and \(C_{\mathrm{DFF}}\) and \(C_{\mathrm{GADFF}}\) are their corresponding focus-confidence maps. With \(N=17\), the input has \(17+16+5=38\) channels. The network uses separate stems for the focus-stack channels, focal-difference channels, and five prior channels, followed by a lightweight ResUNet-style encoder-decoder with skip connections and a sigmoid height output.
+
+\section*{Method Insert: Confidence-Gated Prior Objective}
+
+For synthetic samples, the ground-truth height map \(H^\ast\) is available. The model predicts a normalized height map \(\hat{H}=f_{\theta}(X)\). The training objective contains a supervised synthetic data term, gradient/curvature/normal regularization terms, and a confidence-gated prior-consistency term:
+
+\begin{equation}
+\mathcal{L}
+= \mathcal{L}_{\mathrm{data}}
+ + 0.22\mathcal{L}_{\mathrm{grad}}
+ + 0.055\mathcal{L}_{\mathrm{curv}}
+ + 0.035\mathcal{L}_{\mathrm{normal}}
+ + 0.045\mathcal{L}_{\mathrm{prior}}.
+\end{equation}
+
+The data, gradient, and curvature terms use a Charbonnier penalty. The prior target combines DFF and GADFF:
+
+\begin{equation}
+P_{\mathrm{prior}}=0.45\dff+0.55\gadff.
+\end{equation}
+
+The confidence gate is computed from the two focus-confidence maps:
+
+\begin{equation}
+C_{\mathrm{focus}}=\mathrm{clip}(0.65C_{\mathrm{DFF}}+0.35C_{\mathrm{GADFF}},0,1),
+\end{equation}
+
+and the prior-consistency weight is softened by the glare/risk cue:
+
+\begin{equation}
+W_{\mathrm{prior}}=\mathrm{clip}\left(C_{\mathrm{focus}}^{1.5}(1-0.45R),0.02,1.0\right).
+\end{equation}
+
+The prior-consistency term is therefore:
+
+\begin{equation}
+\mathcal{L}_{\mathrm{prior}}
+=
+\frac{\sum_{p} W_{\mathrm{prior}}(p)\rho(\hat{H}(p)-P_{\mathrm{prior}}(p))}
+{\max\left(\sum_{p}W_{\mathrm{prior}}(p),1\right)},
+\end{equation}
+where \(\rho(\cdot)\) denotes the Charbonnier penalty. This design keeps the ground-truth supervised data term uniform and uses confidence only to gate the DFF/GADFF consistency term. In other words, DFF and GADFF are treated as confidence-weighted physical observations rather than uniformly trusted labels.
+
+\section*{Experiments Insert: Three-Layer Evaluation Protocol}
+
+The revised manuscript should describe the evaluation as three linked evidence layers. First, the fixed synthetic test split provides absolute height-error metrics because synthetic height maps are known. Second, stratified analysis evaluates whether the gain is concentrated in diagnostically meaningful regions, especially low-confidence focus regions. Third, real focus stacks are evaluated with no-reference diagnostics because calibrated real height ground truth is unavailable.
+
+This protocol separates what each evidence type can support. Synthetic GT evaluation supports quantitative height-error comparison. Stratified synthetic evaluation supports mechanism interpretation. Real-stack diagnostics support simulation-to-real alignment in terms of focus-response stability and local DFF spike suppression, but do not measure calibrated real-height accuracy.
+
+\section*{Results Insert: Synthetic Quantitative Evidence}
+
+\begin{table}[h]
+  \centering
+  \caption{ABL-07 synthetic full-split evidence for \method. Lower MAE is better. Both ABL-07 runs are claim-ineligible for final manuscript tables until the full paper-level claim review, but they are audit-passed internal evidence.}
+  \label{tab:cgp_synthetic}
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Run & Mean MAE & Edge MAE & High-risk MAE & Gain vs. DFF \\
+    & (\um{}) & (\um{}) & (\um{}) & (\%) \\
+    \midrule
+    ABL-07 full candidate & 55.93 & 123.67 & 41.76 & 44.38 \\
+    ABL-07 seed repeat & 66.10 & 119.40 & 48.33 & 34.27 \\
+    DFF prior baseline & 100.55 & -- & -- & -- \\
+    GADFF prior baseline & 105.83 & -- & -- & -- \\
+    Previous ABL-04 reference & 75.46 & 126.88 & 60.74 & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+On the fixed seven-sample synthetic test split, the first ABL-07 run reaches 55.93 \um{} mean MAE, and the seed repeat reaches 66.10 \um{}. Both runs remain below the previous ABL-04 reference result of 75.46 \um{}. The two runs improve over DFF by 44.38\% and 34.27\% in ratio-of-means MAE, with DFF win rates of 6/7 and 4/7 respectively. The seed sensitivity indicates that the result should be presented as audit-passed internal evidence and should still receive final manuscript-level claim review before promotion to a main table.
+
+\section*{Results Insert: Stratified Mechanism Evidence}
+
+\begin{table}[h]
+  \centering
+  \caption{Stratified synthetic evidence. The clearest and most stable ABL-07 gain appears in low-confidence focus regions.}
+  \label{tab:cgp_strata}
+  \small
+  \begin{tabular}{llrrr}
+    \toprule
+    Run & Stratum & Model MAE & Gain vs. DFF & Win rate \\
+    & & (\um{}) & (\%) & \\
+    \midrule
+    ABL-07 full candidate & Low-confidence & 67.02 & 55.64 & 6/7 \\
+    ABL-07 seed repeat & Low-confidence & 75.94 & 49.74 & 6/7 \\
+    ABL-07 full candidate & High-risk & 44.52 & 14.70 & 3/7 \\
+    ABL-07 seed repeat & High-risk & 50.01 & 4.17 & 3/7 \\
+    ABL-07 full candidate & Normal & 70.25 & 35.00 & 3/7 \\
+    ABL-07 seed repeat & Normal & 83.07 & 23.14 & 3/7 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The stratified results clarify the mechanism of the method. Low-confidence focus regions show the strongest and most stable gain across both seeds, with 55.64\% and 49.74\% ratio-of-means improvement over DFF and 6/7 win rate in both runs. High-risk regions improve in ratio-of-means MAE but have weaker win rates. Therefore, the safest mechanism statement is that confidence-gated prior consistency is most reliable when written around focus-confidence uncertainty; glare/risk should be treated as a cue that softens prior consistency rather than as the primary source of the gain.
+
+\section*{Results Insert: Real-Stack Diagnostic Alignment}
+
+\begin{table}[h]
+  \centering
+  \caption{Real focus-stack no-reference diagnostic alignment. LCR, STR, and SR denote local-deviation reduction in low-confidence, spike-top10, and saturated regions. These metrics do not measure calibrated real-height accuracy.}
+  \label{tab:cgp_real_alignment}
+  \footnotesize
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular}{lrrrrr}
+    \toprule
+    Checkpoint & Stacks & LCR & STR & SR & Conf. corr. \\
+    & & (\%) & (\%) & (\%) & \\
+    \midrule
+    ABL-07 full candidate & 7 & 94.85 & 96.25 & 83.16 & 0.5073 \\
+    ABL-07 seed repeat & 7 & 95.32 & 96.93 & 81.40 & 0.4213 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The real-stack analysis evaluates seven real focus stacks with no calibrated height ground truth. Both ABL-07 checkpoints consistently suppress DFF local-deviation spikes in diagnostically unreliable regions. Across per-stack rows, the minimum low-confidence reduction is 87.56\%, the minimum spike-top10 reduction is 90.93\%, and the minimum finite saturated-region reduction is 77.71\%. This supports the simulation-to-real alignment story at the diagnostic level: the confidence-gated prior model reduces unstable DFF behavior where focus diagnostics indicate low reliability. The result should be written as no-reference real-stack diagnostic consistency, not as real-height accuracy.
+
+\section*{Discussion Insert: Claim Boundary}
+
+The strongest supported statement is that \method{} improves synthetic height prediction and aligns with real focus-stack diagnostics by suppressing unstable DFF behavior in low-confidence and spike-prone regions. The synthetic results provide quantitative height-error evidence because ground truth is available. The real-stack results provide diagnostic evidence because ground truth is unavailable.
+
+Several claims remain outside the current evidence boundary. The method should not yet be described as achieving calibrated real-height accuracy on real samples. It should not be claimed to outperform updated external SOTA methods until DFV, DDFFNet, or other compatible focus-stack baselines are evaluated under a shared protocol. Finally, the real-stack smoothing effect should be interpreted as diagnostic stabilization rather than proof that every smoothed region corresponds to physically correct surface recovery.
+
+\section*{Safe Manuscript Wording}
+
+\begin{quote}
+On real focus stacks without calibrated height ground truth, \method{} consistently reduces local DFF fluctuations in diagnostically unreliable regions, including low-confidence focus regions, spike-prone regions, and saturated regions. This supports confidence-gated prior consistency as a simulation-to-real alignment mechanism, while calibrated real-height accuracy remains unverified.
+\end{quote}
+
+\section*{Unsafe Wording to Avoid}
+
+\begin{itemize}
+  \item Any statement that turns real-stack diagnostics into calibrated real-height accuracy.
+  \item Any statement that claims superiority over external focus-stack baselines before compatible baseline experiments are run.
+  \item Any statement that treats no-reference metrics as proof of geometric correctness.
+  \item Any statement that assigns the main improvement to the glare cue without supporting ablation evidence.
+\end{itemize}
+
+\end{document}

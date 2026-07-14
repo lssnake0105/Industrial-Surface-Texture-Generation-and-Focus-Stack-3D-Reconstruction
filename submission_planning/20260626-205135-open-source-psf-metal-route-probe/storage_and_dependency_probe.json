@@ -1,0 +1,6 @@
+{
+  "pyotf_vendor_mb": 0.5918693542480469,
+  "single_float64_psf_stack_mb": 20.125,
+  "expected_outputs_mb": 8.0,
+  "psf_generator_dry_run_download_mb_at_least": 214.0
+}

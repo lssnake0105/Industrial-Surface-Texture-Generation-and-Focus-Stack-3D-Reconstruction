@@ -1,0 +1,70 @@
+{
+  "status": "pass",
+  "date": "2026-06-22",
+  "sample_count": 7,
+  "candidate_count": 43,
+  "max_pixels_per_sample": 160000,
+  "quantile_buckets": 6,
+  "rank1_gate_id": "cfocus_p1.5_risk0_min002",
+  "current_gate_rank": 21,
+  "current_gate_id": "cfocus_p1.5_risk0.45_min002",
+  "sample_metrics_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_sample_metrics.csv",
+  "aggregate_metrics_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_aggregate_metrics.csv",
+  "bucket_metrics_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_bucket_metrics.csv",
+  "summary_json": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_reliability_summary.json",
+  "report_md": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_reliability_diagnostic_report.md",
+  "plot_paths": [
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_top_candidates.png",
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\cfocus_p1.5_risk0_min002_bucket_curve.png",
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\focus_only_p1.5_bucket_curve.png"
+  ],
+  "check_count": 7,
+  "error_count": 0,
+  "checks": [
+    {
+      "check": "sample count positive",
+      "passed": true,
+      "detail": "7",
+      "severity": "error"
+    },
+    {
+      "check": "candidate count positive",
+      "passed": true,
+      "detail": "43",
+      "severity": "error"
+    },
+    {
+      "check": "current gate found",
+      "passed": true,
+      "detail": "1",
+      "severity": "error"
+    },
+    {
+      "check": "sample CSV written",
+      "passed": true,
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_sample_metrics.csv",
+      "severity": "error"
+    },
+    {
+      "check": "aggregate CSV written",
+      "passed": true,
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_aggregate_metrics.csv",
+      "severity": "error"
+    },
+    {
+      "check": "bucket CSV written",
+      "passed": true,
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_bucket_metrics.csv",
+      "severity": "error"
+    },
+    {
+      "check": "plot written",
+      "passed": true,
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\gate_shape_reliability_diagnostic\\gate_shape_top_candidates.png",
+      "severity": "error"
+    }
+  ],
+  "claim_eligible": false,
+  "main_table_eligible": false,
+  "claim_boundary": "Synthetic GT prior-reliability diagnostic only. No model accuracy or calibrated real-height claim."
+}

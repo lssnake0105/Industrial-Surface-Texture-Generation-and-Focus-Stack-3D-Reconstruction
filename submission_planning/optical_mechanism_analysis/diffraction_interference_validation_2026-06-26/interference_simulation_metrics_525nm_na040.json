@@ -1,0 +1,11 @@
+{
+  "na": 0.4,
+  "wavelength_um": 0.525,
+  "first_zero_radius_um": 0.8006249999999999,
+  "ideal_energy_outside_first_zero": 0.14516595726067977,
+  "weak_ghost_energy_outside_first_zero": 0.423087201999452,
+  "synthetic_image_p5_p95_difference_modulation": 0.11874350448422585,
+  "ghost_amplitude_peak": 0.12,
+  "partial_coherence_visibility": 0.1,
+  "fringe_period_um": 4.0
+}

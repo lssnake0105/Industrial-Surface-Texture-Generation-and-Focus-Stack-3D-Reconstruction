@@ -1,0 +1,74 @@
+{
+  "status": "pass",
+  "date": "2026-06-22",
+  "run_id": "ABL-07",
+  "variant": "CGP-FocusNet / ABL-07 confidence-gated DFF/GADFF prior",
+  "device": "cuda",
+  "sample_count": 7,
+  "checkpoint_tags": [
+    "2026-06-22_confidence_gated_prior_full_candidate",
+    "2026-06-22_confidence_gated_prior_seed_repeat"
+  ],
+  "bucket_metrics_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_bucket_metrics.csv",
+  "aggregate_metrics_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_aggregate_metrics.csv",
+  "correlation_metrics_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_correlation_metrics.csv",
+  "correlation_summary_csv": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_correlation_summary.csv",
+  "summary_json": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_summary.json",
+  "report_md": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_calibration_report.md",
+  "plot_paths": [
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\2026-06-22_confidence_gated_prior_full_candidate_quantile_confidence_reliability_curve.png",
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\2026-06-22_confidence_gated_prior_full_candidate_fixed_confidence_reliability_curve.png",
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\2026-06-22_confidence_gated_prior_seed_repeat_quantile_confidence_reliability_curve.png",
+    "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\2026-06-22_confidence_gated_prior_seed_repeat_fixed_confidence_reliability_curve.png"
+  ],
+  "check_count": 7,
+  "error_count": 0,
+  "warning_count": 0,
+  "checks": [
+    {
+      "check": "2026-06-22_confidence_gated_prior_full_candidate checkpoint exists",
+      "passed": true,
+      "severity": "error",
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\tmp\\ablation_results\\ABL-07\\checkpoints\\2026-06-22_confidence_gated_prior_full_candidate.pt"
+    },
+    {
+      "check": "2026-06-22_confidence_gated_prior_seed_repeat checkpoint exists",
+      "passed": true,
+      "severity": "error",
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\tmp\\ablation_results\\ABL-07\\checkpoints\\2026-06-22_confidence_gated_prior_seed_repeat.pt"
+    },
+    {
+      "check": "sample count positive",
+      "passed": true,
+      "severity": "error",
+      "detail": "7"
+    },
+    {
+      "check": "bucket rows written",
+      "passed": true,
+      "severity": "error",
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_bucket_metrics.csv"
+    },
+    {
+      "check": "aggregate rows written",
+      "passed": true,
+      "severity": "error",
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_aggregate_metrics.csv"
+    },
+    {
+      "check": "correlation rows written",
+      "passed": true,
+      "severity": "error",
+      "detail": "D:\\Documents\\Desktop\\projects\\SRTP\\submission_planning\\optical_mechanism_analysis\\focus_confidence_reliability_calibration\\focus_confidence_reliability_correlation_metrics.csv"
+    },
+    {
+      "check": "plots written",
+      "passed": true,
+      "severity": "error",
+      "detail": "4 plots"
+    }
+  ],
+  "claim_eligible": false,
+  "main_table_eligible": false,
+  "claim_boundary": "Synthetic GT reliability calibration only. No calibrated real-height accuracy claim."
+}

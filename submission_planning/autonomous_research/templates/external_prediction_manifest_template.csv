@@ -1,0 +1,3 @@
+method,training_setting,sample_id,prediction_path,scale_mode,clip
+DFV,synthetic_retrain,test_V谷_P10_宽谷粗糙平底,tmp/external_baseline_results/DFV/predictions/test_V谷_P10_宽谷粗糙平底.npy,raw_norm,false
+DDFFNet,synthetic_retrain,test_V谷_P10_宽谷粗糙平底,tmp/external_baseline_results/DDFFNet/predictions/test_V谷_P10_宽谷粗糙平底.npy,raw_norm,false

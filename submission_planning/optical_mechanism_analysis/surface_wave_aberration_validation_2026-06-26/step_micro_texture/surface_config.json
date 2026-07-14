@@ -1,0 +1,23 @@
+{
+  "name": "step_micro_texture",
+  "width": 960,
+  "height": 540,
+  "depth_range_um": 70.0,
+  "baseline_type": "step",
+  "noise_type": "perlin",
+  "seed": 2603,
+  "tilt_x_um": 0.0,
+  "tilt_y_um": 0.0,
+  "feature_amp_um": 62.0,
+  "noise_amp_um": 1.4,
+  "period_count": 8.0,
+  "ridge_width": 0.13,
+  "step_position": -0.08,
+  "perlin_octaves": 6,
+  "perlin_grid": 34,
+  "perlin_persistence": 0.56,
+  "valley_width": 0.36,
+  "valley_floor": 0.08,
+  "valley_sharpness": 1.0,
+  "orientation_deg": 0.0
+}
